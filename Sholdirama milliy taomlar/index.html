@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sholdirama Oshxonasi — Online Buyurtma</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+<!-- MODE BANNER -->
+<div id="mode-banner"></div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">Sholdirama <span class="accent">Oshxonasi</span></a>
+  <div class="nav-links">
+    <a href="#menu">Menyu</a>
+    <a href="#location">Manzil</a>
+  </div>
+  <div class="nav-right">
+    <div id="auth-area">
+      <button class="btn-auth" onclick="openAuthModal()">Kirish</button>
+    </div>
+    <button class="btn-cart" onclick="toggleCart()">
+      Savat <span class="cart-badge" id="cart-count">0</span>
+    </button>
+    <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" title="Kun/Tun rejimi" aria-label="Kun/Tun rejimi">
+      <span class="tt-dot"></span>
+    </button>
+    <button class="hamburger" onclick="toggleMobileNav()">☰</button>
+  </div>
+</nav>
+<div class="mobile-nav" id="mobile-nav">
+  <a href="#menu" onclick="toggleMobileNav()">Menyu</a>
+  <a href="#location" onclick="toggleMobileNav()">Manzil</a>
+  <a href="#" onclick="openAuthModal();toggleMobileNav()">Kirish / Ro'yxat</a>
+  <a href="#" onclick="toggleTheme()">Kun / Tun rejimi</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">Online Buyurtma · Tez Yetkazib Berish</div>
+  <h1>O'zbek taomlarining<br><em>haqiqiy lazzati</em></h1>
+  <p>Shashlik, somsa, milliy ovqatlar va boshqa ko'plab taomlarni uyingizga yetkazib beramiz. Toza, mazali, issiq!</p>
+  <div class="hero-btns">
+    <a href="#menu" class="btn-primary">Menyuni Ko'rish</a>
+    <a href="#location" class="btn-outline">Bizning Joylashuvimiz</a>
+  </div>
+  <div class="hero-stats">
+    <div><div class="hero-stat-num">500+</div><div class="hero-stat-label">Mamnun mijoz</div></div>
+    <div><div class="hero-stat-num">30<span style="font-size:1.2rem">min</span></div><div class="hero-stat-label">O'rtacha yetkazish</div></div>
+    <div><div class="hero-stat-num">50+</div><div class="hero-stat-label">Taom turi</div></div>
+    <div><div class="hero-stat-num">4.9</div><div class="hero-stat-label">Mijoz bahosi</div></div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu-section" id="menu">
+  <p class="section-eyebrow">— Bizning Menyumiz —</p>
+  <h2 class="section-title">Barcha <span class="accent">Taomlarimiz</span></h2>
+  <p class="section-sub">Sevimli taomingizni tanlang va buyurtma bering</p>
+
+  <div class="search-wrap">
+    <input class="search-input" type="text" id="search-inp"
+           placeholder="Taom nomini qidiring..."
+           oninput="filterSearch(this.value)">
+  </div>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab(this,'all')">Hammasi</button>
+    <button class="tab-btn" onclick="switchTab(this,'shashlik')">Shashliklar</button>
+    <button class="tab-btn" onclick="switchTab(this,'somsa')">Somsalar</button>
+    <button class="tab-btn" onclick="switchTab(this,'ovqat')">Ovqatlar</button>
+    <button class="tab-btn" onclick="switchTab(this,'ichimlik')">Ichimliklar</button>
+    <button class="tab-btn" onclick="switchTab(this,'desert')">Desertlar</button>
+    <button class="tab-btn" onclick="switchTab(this,'non')">Non & Lavash</button>
+  </div>
+
+  <div class="menu-grid" id="menu-grid"></div>
+</section>
+
+<!-- MAP -->
+<section class="map-section" id="location">
+  <div class="map-inner">
+    <div class="map-grid">
+      <div class="map-info">
+        <p class="section-eyebrow">— Bizni Toping —</p>
+        <h2>Bizning <span class="accent">Manzilimiz</span></h2>
+        <p>Andijon shahrida joylashgan oshxonamizga xush kelibsiz!</p>
+        <div class="info-list">
+          <div class="info-row"><div><strong>Manzil</strong><span>Andijon sh., MAYBACH avto bezak oldida, Boburshox ko'chasi</span></div></div>
+          <div class="info-row"><div><strong>Telefon</strong><span>+998 88 005 01 00 · +998 97 300 35 13</span></div></div>
+          <div class="info-row"><div><strong>Ish vaqti</strong><span>Har kuni: 06:00 — 00:00</span></div></div>
+          <div class="info-row"><div><strong>Yetkazib berish</strong><span>5 km gacha bepul · undan tashqari 5 000 so'm/km</span></div></div>
+          <div class="info-row"><div><strong>To'lov usullari</strong><span>Naqd pul · Yetkazib berganda POS-terminal orqali karta</span></div></div>
+        </div>
+      </div>
+      <div>
+        <div class="map-frame">
+          <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=72.3300%2C40.7700%2C72.3700%2C40.7950&layer=mapnik&marker=40.7820%2C72.3500"
+            allowfullscreen loading="lazy" title="Lazzat Oshxonasi manzili"></iframe>
+        </div>
+        <a class="map-link" href="https://www.openstreetmap.org/?mlat=40.7820&mlon=72.3500#map=16/40.7820/72.3500" target="_blank">
+         Katta xaritada ochish ↗
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="nav-logo">Sholdirama <span class="accent">Oshxonasi</span></span>
+        <p>O'zbekistonning eng mazali milliy taomlarini uyingizga yetkazib beramiz.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Menyumiz</h5>
+        <a href="#menu">Shashliklar</a><a href="#menu">Somsalar</a>
+        <a href="#menu">Milliy ovqatlar</a><a href="#menu">Ichimliklar</a>
+      </div>
+      <div class="footer-col">
+        <h5>Aloqa</h5>
+        <a href="tel:+998880050100">+998 88 005 01 00</a>
+        <a href="#">Telegram</a><a href="https://www.instagram.com/sholdirama.milliy.taomlar?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">Instagram</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Sholdirama Oshxonasi. Barcha huquqlar himoyalangan.</p>
+      <p>Andijon, O'zbekiston</p>
+    </div>
+  </div>
+</footer>
+
+<!-- CART SIDEBAR -->
+<div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
+<div class="cart-panel" id="cart-panel">
+  <div class="cart-head">
+    <h3>Savatcha</h3>
+    <button class="icon-close" onclick="toggleCart()">✕</button>
+  </div>
+  <div class="cart-body" id="cart-body">
+    <div class="cart-empty"><p>Savatcha bo'sh</p></div>
+  </div>
+  <div class="cart-foot" id="cart-foot" style="display:none">
+    <div class="cart-total-row">
+      <span class="cart-total-label">Jami to'lov:</span>
+      <span class="cart-total-val" id="cart-total-val">0 so'm</span>
+    </div>
+    <button class="btn-checkout" onclick="openCheckout()">Buyurtma Berish</button>
+  </div>
+</div>
+
+<!-- AUTH MODAL -->
+<div class="modal-overlay" id="auth-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('auth-modal')">✕</button>
+    <div class="modal-top">
+      
+      <h3>Sholdirama Oshxonasi</h3>
+      <p>Hisobingizga kiring yoki ro'yxatdan o'ting</p>
+    </div>
+    <div class="modal-body">
+      <div class="auth-prompt" id="auth-checkout-note" style="display:none">
+        Buyurtma berish uchun avval ro'yxatdan o'ting yoki hisobingizga kiring
+      </div>
+      <div class="auth-tabs">
+        <button class="auth-tab-btn active" data-tab="login" onclick="switchAuthTab('login')">Kirish</button>
+        <button class="auth-tab-btn" data-tab="register" onclick="switchAuthTab('register')">Ro'yxat</button>
+      </div>
+
+      <!-- Main body (login / register forms) -->
+      <div id="auth-main-body">
+        <!-- LOGIN -->
+        <div id="login-form">
+          <div class="form-group">
+            <label>Email manzil</label>
+            <input class="form-input" type="email" id="login-email" placeholder="misol@email.com">
+          </div>
+          <div class="form-group">
+            <label>Parol</label>
+            <input class="form-input" type="password" id="login-password" placeholder="Parolingizni kiriting"
+                   onkeydown="if(event.key==='Enter')doLogin()">
+          </div>
+          <button class="form-submit" onclick="doLogin()">Kirish →</button>
+        </div>
+
+        <!-- REGISTER -->
+        <div id="register-form" style="display:none">
+          <!-- Method toggle -->
+          <div class="reg-method-toggle">
+            <button class="reg-method-btn active" id="rmb-email" onclick="toggleRegMethod('email')">
+              Email bilan
+            </button>
+            <button class="reg-method-btn" id="rmb-phone" onclick="toggleRegMethod('phone')">
+              Telefon bilan
+            </button>
+          </div>
+          <input type="hidden" id="reg-method-value" value="email">
+
+          <div class="form-group">
+            <label>Ismingiz</label>
+            <input class="form-input" type="text" id="reg-name" placeholder="To'liq ismingiz">
+          </div>
+
+          <div id="reg-email-fields">
+            <div class="form-group">
+              <label>Email manzil</label>
+              <input class="form-input" type="email" id="reg-email" placeholder="misol@email.com">
+            </div>
+          </div>
+          <div id="reg-phone-fields" style="display:none">
+            <div class="form-group">
+              <label>Telefon raqam</label>
+              <input class="form-input" type="tel" id="reg-phone-field" placeholder="+998 90 000 00 00">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Parol</label>
+            <input class="form-input" type="password" id="reg-password" placeholder="Kamida 6 ta belgi">
+          </div>
+          <button class="form-submit" onclick="doRegister()">Kod Yuborish →</button>
+        </div>
+      </div><!-- /auth-main-body -->
+
+      <!-- OTP VERIFICATION SCREEN -->
+      <div id="auth-otp-body">
+        
+        <div class="otp-title">Tasdiqlash Kodini Kiriting</div>
+        <div class="otp-dest-label" id="otp-dest-label">Emailingizga kod yuborildi:</div>
+        <div class="otp-destination" id="otp-destination"></div>
+        <div class="otp-demo-hint" id="otp-demo-hint"></div>
+        <input class="otp-single" type="text" id="otp-input" maxlength="4"
+               placeholder="_ _ _ _" inputmode="numeric"
+               onkeydown="if(event.key==='Enter')verifyOTP()">
+        <button class="form-submit" onclick="verifyOTP()" style="margin-top:.8rem">Tasdiqlash</button>
+        <div class="otp-resend">
+          <button onclick="resendOTP()">Kodni qayta yuborish</button>
+          &nbsp;·&nbsp;
+          <button onclick="hideOTPScreen()">← Orqaga</button>
+        </div>
+      </div><!-- /auth-otp-body -->
+
+    </div>
+  </div>
+</div>
+
+<!-- CHECKOUT MODAL -->
+<div class="modal-overlay" id="checkout-modal">
+  <div class="modal" style="max-width:500px">
+    <button class="modal-close" onclick="closeModal('checkout-modal')">✕</button>
+    <div class="modal-top">
+      
+      <h3>Buyurtmani Tasdiqlash</h3>
+      <p>Ma'lumotlaringizni to'ldiring</p>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label>Yetkazib berish manzili</label>
+        <input class="form-input" type="text" id="delivery-address" placeholder="Ko'cha, uy raqami, kvartira">
+      </div>
+      <div class="form-group">
+        <label>Telefon raqam</label>
+        <input class="form-input" type="tel" id="delivery-phone" placeholder="+998 90 000 00 00">
+      </div>
+      <div class="form-group">
+        <label>Izoh (ixtiyoriy)</label>
+        <input class="form-input" type="text" id="delivery-note" placeholder="Qo'shimcha ma'lumot">
+      </div>
+
+      <div class="order-summary">
+        <h4>Buyurtma tafsiloti</h4>
+        <div id="order-summary-list"></div>
+        <div class="os-total"><span>Jami:</span><span id="order-total-final">0 so'm</span></div>
+      </div>
+
+      <!-- PAYMENT METHOD (no online card data is ever collected) -->
+      <div class="form-group">
+        <label>To'lov usuli</label>
+        <div class="pay-options">
+          <button class="pay-btn selected" data-pay="cash" onclick="selectPayment(this,'cash')">Naqd pul</button>
+          <button class="pay-btn" data-pay="pos" onclick="selectPayment(this,'pos')">Karta (POS-terminal)</button>
+        </div>
+        <div class="pay-note" id="pay-note-cash">Kuryerga naqd pul to'laysiz.</div>
+        <div class="pay-note" id="pay-note-pos">Kuryer POS-terminal olib keladi — kartangizni yetkazib berilganda tokchada o'tkazasiz. Karta ma'lumotlarini saytga kiritish shart emas.</div>
+      </div>
+
+      <button class="form-submit" onclick="confirmOrder()" style="margin-top:.5rem">Buyurtma Berish</button>
+    </div>
+  </div>
+</div>
+
+<!-- SUCCESS MODAL -->
+<div class="modal-overlay" id="success-modal">
+  <div class="modal" style="max-width:380px;text-align:center">
+    <button class="modal-close" onclick="closeModal('success-modal')">✕</button>
+    <div class="modal-top"><h3>Buyurtma Qabul Qilindi!</h3><p>Tez orada siz bilan bog'lanamiz</p></div>
+    <div class="modal-body">
+      <div class="receipt-row"><span>Buyurtma raqami</span><strong id="success-order-id">—</strong></div>
+      <div class="receipt-row"><span>Jami summa</span><strong id="success-order-total" style="color:var(--red)">—</strong></div>
+      <p style="color:var(--gray);line-height:1.7;font-size:.9rem;margin-top:1rem">
+        Buyurtmangiz muvaffaqiyatli qabul qilindi.<br>
+        Kuryer <strong>15–30 daqiqa</strong> ichida yetkazib beradi.<br>
+        <strong>+998 88 005 01 00</strong>
+      </p>
+      <button class="form-submit" onclick="closeModal('success-modal')" style="margin-top:1.2rem">Yaxshi!</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+<script src="./js/app.js"></script>
+</body>
+</html>
